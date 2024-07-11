@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 const MobileNumberForm = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [pendingResponse, setPendingResponse] = useState(null);
   const [anotherApiResponse, setAnotherApiResponse] = useState(null); // New state for another API response
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event:any) => {
     event.preventDefault();
     setLoading(true);
-    setError(null);
+    setError('');
 
     try {
       const res = await fetch(`https://check-consent-backend.vercel.app/abc?mobile_number=${mobileNumber}`);
@@ -35,7 +35,7 @@ const MobileNumberForm = () => {
 
   const handlePendingApiCall = async () => {
     setLoading(true);
-    setError(null);
+    setError('');
 
     try {
       const res = await fetch(`https://check-consent-backend.vercel.app/abcd?mobile_number=${mobileNumber}`);
